@@ -1,0 +1,56 @@
+
+<div class="container-fluid row">
+  
+</div>
+<div class="container col-lg-6 col-md-8 col-sm-11">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <h2 class="m-5">Sign up</h2>
+
+    <div class="field m-4 mt-2">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+
+    <div class="field m-4 mt-2">
+      <%= f.label :mobile %><br />
+      <%= f.text_field :mobile, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field m-4 mt-2">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>  
+    
+    <div class="field m-4 mt-2">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field m-4 mt-2">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field m-4 mt-2">
+      
+      <%= f.radio_button :type, 'client', :class => 'form-check-input' %> Client  
+        
+      <%= f.radio_button :type, 'builder', checked: true , :class => 'form-check-input' %> Builder
+    </div>
+
+    <div class="actions m-4 mt-2">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+
+  
+</div>
+
+
+
+
+<%# render "devise/shared/links"%>
