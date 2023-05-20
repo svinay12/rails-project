@@ -17,13 +17,23 @@
 
   <body>
     <%= render :partial => 'layouts/header' %>
+
     <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
+      <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
+        <%= notice %>
+        <button type="button" class="close " data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     <% end %>
     <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    
+      <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+        <%= alert %>
+        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>    
  
     <%= yield %>
   </body>
