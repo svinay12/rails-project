@@ -35,18 +35,28 @@
           <%= image_tag 'default_profile.png', height: 35, width: 35, class: 'rounded-circle'  %>
         </a>
         <ul class="dropdown-menu dropdown-menu-end shadow p-3 mb-5 bg-body rounded">
-          <li>
-            <%= link_to "Profile", "/user/show" , class: 'nav-link fs-5 text-dark'%>
-          </li>
-          <li>
-            <%= link_to "Sign_up", "/users/sign_up" , class: 'nav-link fs-5 text-dark'%>
-          </li>
-          <li>
-            <%= link_to "Login", "/users/sign_in" , class: 'nav-link fs-5 text-dark'%>
-          </li>
-          <li>
-            <%= button_to "Logout", destroy_user_session_path, :method => :delete, class: 'nav-link fs-5 p-0 text-dark container-fluid' %>
-          </li>
+          
+          <% if user_signed_in? %>
+            <li class="text-center">
+              <%= image_tag 'default_profile.png', height: 35, width: 35, class: 'rounded-circle'  %>
+              <h5><%= @user.name %></h5>
+            </li>
+            <li>
+              <%= link_to "Profile", user_show_path, method: :post , class: 'nav-link fs-5 text-dark'%>
+            </li>
+            <li>
+              <%= button_to "Logout", destroy_user_session_path, :method => :delete, class: 'nav-link fs-5 p-0 text-dark container-fluid' %>
+            </li>
+          <% else %>  
+            <li>
+              <%= link_to "Sign_up", "/users/sign_up" , class: 'nav-link fs-5 text-dark'%>
+            </li>
+            <li>
+              <%= link_to "Login", "/users/sign_in" , class: 'nav-link fs-5 text-dark'%>
+            </li>
+          <% end %>
+
+          
         </ul>
       </li>
     </ul>

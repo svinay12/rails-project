@@ -1,13 +1,12 @@
-
-<div class="container-fluid row">
-  
-</div>
-<div class="container col-lg-6 col-md-8 col-sm-11">
+<div class="container col-lg-4 col-md-8 col-sm-11 d-flex align-item-center shadow-lg rounded mt-2", style='background-image: linear-gradient(to right top, #f48603, #1db9ff);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;'>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <h2 class="m-5">Sign up</h2>
+    <h2 class="mt-1 mb-2">Sign up</h2>
 
-    <div class="field m-4 mt-2">
+    <div class="field m-4 mt-1">
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
     </div>
@@ -37,20 +36,19 @@
 
     <div class="field m-4 mt-2">
       
-      <%= f.radio_button :type, 'client', :class => 'form-check-input' %> Client  
+      <%= f.radio_button :user_type, 'client', :class => 'form-check-input' %> Client  
         
-      <%= f.radio_button :type, 'builder', checked: true , :class => 'form-check-input' %> Builder
+      <%= f.radio_button :user_type, 'builder', checked: true , :class => 'form-check-input' %> Builder
     </div>
 
-    <div class="actions m-4 mt-2">
+    
+
+    <div class="actions m-4 mt-2 mb-0">
       <%= f.submit "Sign up" %>
     </div>
+    <div class="field ms-4 mt-0">
+     <p>If you already have an account <%= render "devise/shared/links"%></p>
+    </div>
+
   <% end %>
-
-  
 </div>
-
-
-
-
-<%# render "devise/shared/links"%>
