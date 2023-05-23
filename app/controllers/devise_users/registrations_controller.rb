@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+ 
 class DeviseUsers::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, if: :devise_controller?  
 

@@ -3,6 +3,14 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
+body {
+  background-color: #e5e5f7;
+opacity: 1;
+background-image:  linear-gradient(30deg, #daddf9 12%, transparent 12.5%, transparent 87%, #daddf9 87.5%, #daddf9), linear-gradient(150deg, #daddf9 12%, transparent 12.5%, transparent 87%, #daddf9 87.5%, #daddf9), linear-gradient(30deg, #daddf9 12%, transparent 12.5%, transparent 87%, #daddf9 87.5%, #daddf9), linear-gradient(150deg, #daddf9 12%, transparent 12.5%, transparent 87%, #daddf9 87.5%, #daddf9), linear-gradient(60deg, #daddf977 25%, transparent 25.5%, transparent 75%, #daddf977 75%, #daddf977), linear-gradient(60deg, #daddf977 25%, transparent 25.5%, transparent 75%, #daddf977 75%, #daddf977);
+background-size: 20px 35px;
+background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+}
+
 
 .search {
   width: 100%;

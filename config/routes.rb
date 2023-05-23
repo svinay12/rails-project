@@ -3,14 +3,13 @@ Rails.application.routes.draw do
   get 'user/show'
   get 'user/index'
   root 'page#index'
-  
-  get 'property/index'
-  get 'property/show'
-  get 'property/new'
-  get 'property/create'
-  get 'property/edit'
-  get 'property/update'
-  get 'property/delete'
+
+  get 'address/edit' => 'user#edit_address'
+  patch 'address' => 'user#update_address' 
+  put 'address' => 'user#update_address'
+  delete 'address' => 'user#destroy_address'
+  get 'address/create' => 'user#create_address'
+
   
   devise_for :users, controllers: {
         sessions: 'devise_users/sessions',
@@ -19,11 +18,8 @@ Rails.application.routes.draw do
         registrations: 'devise_users/registrations',
         unlocks: 'devise_users/unlocks'
       }
-
-  # devise_scope :users do
-  #   get    'user/show'   => 'user/show',
-  #   get    'user/index'   => 'user/index'
-  # end
+  
+  
 
   resource :property
 end

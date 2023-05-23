@@ -1,0 +1,32 @@
+<div class="container" >
+  <div class="row justify-content-center login">
+    <div class="col-lg-6 col-md-10 d-flex flex-column align-items-center justify-content-center mt-2 bg-white shadow-lg" >
+      
+      <%= form_for( url: address_edit_path, html: { method: :put }) do |f| %>
+        <h2 class="mt-1 mb-2 text-center">Edit Address</h2>
+        <div class="row">
+
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :name ,:class => 'form-label '%><br />
+            <%= f.email_field :name, autofocus: true, autocomplete: "name" ,:class => 'form-control'%>
+          </div>
+
+
+
+          <div class="actions  m-4 mt-1 col-lg-5 col-md-8">
+            <%= link_to "Back", :back ,:class =>'btn btn-primary p-1 me-4'%>
+            <%= f.submit "Update",:class => ' btn-warning'%>
+          </div>
+          
+          <div class="m-4 col-11 mt-1 border border-danger">
+            <h3>Cancel my account</h3>
+            <div>
+             <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete,:class =>'btn-danger mb-2' %>
+            </div>            
+          </div>
+        </div>
+          
+      <% end %>
+    </div>
+  </div>
+</div>
