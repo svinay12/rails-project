@@ -9,7 +9,7 @@
                 <h5><%=  @user.user_type.capitalize %></h5>
               </div>
 
-              <div class="col-lg-12 col-md-6  p-0 text-start border border-warning mt-3">
+              <div class="col-lg-12 col-md-6  p-0 text-start border border-primary mt-3 shadow-lg">
                 
 
                 <div class=" m-0 p-0 ps-1">
@@ -32,11 +32,22 @@
 
 
                 <div class="text-end ">
-                  <%= link_to '<button type="button" class="btn btn-warning has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> <i class="fa fa-pencil"></i> </button>'.html_safe, edit_user_registration_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
+                  <%= link_to '<button type="button" class="btn btn-primary has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> <i class="fa fa-pencil"></i> </button>'.html_safe, edit_user_registration_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
                 </div>
                 
               </div> 
-              <div class="col-lg-12 col-md-6  p-0 text-start border border-warning ">
+              <% if @address.nil?%>
+                <div class="col-lg-12 col-md-6  p-0 text-start border border-warning ">
+                  
+                  <div class=" m-0 p-0 ps-1">
+                    <%= link_to '<button type="button" class="m-2 btn btn-primary has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> <i class="fa fa-plus p-1"> Add address</i> </button>'.html_safe, address_create_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
+                  </div>
+                                  
+                </div>  
+              
+
+              <% else %>
+              <div class="col-lg-12 col-md-6  p-0 text-start border border-primary shadow-lg">
                 
                 <div class=" m-0 p-0 ps-1">
                   <div class="" ><strong> Address </strong></div>
@@ -62,10 +73,11 @@
                 </div>
 
                 <div class="text-end ">
-                  <%= link_to '<button type="button" class="btn btn-warning has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> <i class="fa fa-pencil"></i> </button>'.html_safe, address_edit_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
+                  <%= link_to '<button type="button" class="btn btn-primary has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> <i class="fa fa-pencil"></i> </button>'.html_safe, address_edit_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
                 </div>
                 
-              </div>             
+              </div>  
+              <% end %>           
 
               <div class="social-links mt-2">
                 <a href="#" class="twitter m-3"> <i class="bi bi-twitter"> </i></a> 
@@ -110,7 +122,14 @@
                 </div>
 
                 <div class="tab-pane fade" id="profile-change-password">
-                  <h5 class="card-title mt-3">Properties </h5>         
+                  <h5 class="card-title mt-3">Properties </h5>     
+                  
+                  <div class="text-end pe-3">                    
+                    <div class=" m-0 p-0 ps-1">
+                      <%= link_to '<button type="button" class="m-2 btn btn-primary  has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update">  Add property</button>'.html_safe, new_property_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
+                    </div>
+                  </div>  
+                  <%= render partial:'show_property' %>
                 </div>
 
               </div>

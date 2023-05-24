@@ -1,2 +1,37 @@
-<h1>Property#edit</h1>
-<p>Find me in app/views/property/edit.html.erb</p>
+<div class="container" >
+  <div class="row justify-content-center login">
+    <div class="col-lg-6 col-md-10 d-flex flex-column align-items-center justify-content-center mt-2 bg-white shadow-lg" >
+      <%= form_for( @property,url: address_path, method: :post) do |f| %>
+        <h2 class="mt-2 mb-2 text-center">Address Information</h2>
+        <div class="row">
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :plot_no, :class=>'form-label' %><br />
+            <%= f.text_field :plot_no, autofocus: true, autocomplete: "plot_no", :class => 'form-control' %>
+          </div>
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :locality, :class=>'form-label' %><br />
+            <%= f.text_field :locality, autofocus: true, autocomplete: "locality", :class => 'form-control' %>
+          </div>
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :city, :class=>'form-label' %><br />
+            <%= f.text_field :city, autofocus: true, autocomplete: "city", :class => 'form-control' %>
+          </div>
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :state, :class=>'form-label' %><br />
+            <%= f.text_field :state, autofocus: true, autocomplete: "state", :class => 'form-control' %>
+          </div>  
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :zipcode, :class=>'form-label' %><br />
+            <%= f.text_field :zipcode, autofocus: true, autocomplete: "zipcode", :class => 'form-control' %>
+          </div>
+        </div>
+        
+        
+
+        <div class="actions m-4 mt-2 mb-3">
+          <%= f.submit "Add address" %>
+        </div>
+      <% end %>      
+    </div>
+  </div>
+</div>
