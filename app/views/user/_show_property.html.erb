@@ -1,18 +1,28 @@
 <div>
   <% if @property.nil? == false%>
-    <% @property.each do | property | %>
-      <div class="card">
-        <div class="card-header"> Rs <%= property.price%>/-</div>
-        <div class="card-body">
-          <h5 class="card-title">Area = <%= property.land_area%> sqft </h5>
-          <h6 class="card-title">Nice flate with <%= property.floor%> floors </h6>
-          <h6><%= property.address.city%></h6>
-        </div>
-        <div class="card-footer">
-         <button class="btn btn-warning"> update </button>
-         <button class="btn btn-danger"> delete </button>
-        </div>
-      </div><!-- End Card with header and footer -->
-    <% end %>
+    <div class="row shadow-lg">
+      <% @property.each do | property | %>
+        <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-2">
+          <div class="card-header"> Rs <%= property.price%>/-</div>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= property.address.plot_no%>, <%= property.address.locality%>, <%= property.address.city%>, [ <%= property.address.state%> ] - <%= property.address.zipcode%></strong> </h5>
+            <h6 class="card-title">
+              <strong>Land Area :</strong><%= property.land_area%> sqft<br>
+              <strong>Floors :</strong><%= property.floor%> floors
+            </h6>            
+            <p></p>
+            <h6></h6>
+          </div>
+          <div class="card-footer row">
+            <div class="col-lg-5 col-md-6 col-sm-6">
+              <%= button_to 'Update', edit_property_url(property.id), method: :get, :class => ' btn btn-warning text-white '  %>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-6">
+              <%= button_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' }, :class => ' btn btn-danger text-white ' %>
+            </div>
+          </div>
+        </div>      
+      <% end %>
+    </div>
   <% end %>
 </div>

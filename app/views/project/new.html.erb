@@ -1,24 +1,33 @@
 <div class="container" >
   <div class="row justify-content-center login">
     <div class="col-lg-6 col-md-10 d-flex flex-column align-items-center justify-content-center mt-2 bg-white shadow-lg" >
-      <%= form_for( @property ,url: property_path) do |f| %>
-        <h2 class="mt-3 mb-2 text-center">Update Property Information</h2>
+      <%= form_for( @project ,url: '/property' , method: :post) do |f| %>
+        <h2 class="mt-2 mb-2 text-center">Property Information</h2>
         <div class="row">
 
           <div class="field  m-4 mt-1 col-lg-5 col-md-8">
-            <%= f.label :price, :class=>'form-label' %><br />
-            <%= f.number_field :price, autofocus: true, autocomplete: "price", :class => 'form-control' %>
+            <%= f.label :budget, :class=>'form-label' %><br />
+            <%= f.number_field :budget, autofocus: true, autocomplete: "budget", :class => 'form-control' %>
+          </div>
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :time,'Expected time', :class=>'form-label' %><br />
+            <%= f.date_field :time, autofocus: true, autocomplete: "date",, :class => 'form-control' %>
+          </div>
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :project_type, :class=>'form-label' %><br />
+            <%= f.text_field :project_type, autofocus: true, autocomplete: "project_type", :class => 'form-control' %>
+          </div>
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :quotation_file, :class=>'form-label' %><br />
+            <%= f.text_field :quotation_file, autofocus: true, autocomplete: "quotation_file", :class => 'form-control' %>
+          </div>
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :details, :class=>'form-label' %><br />
+            <%= f.text_field :details, autofocus: true, autocomplete: "details", :class => 'form-control' %>
           </div>   
 
-          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
-            <%= f.label :land_area, :class=>'form-label' %><br />
-            <%= f.text_field :land_area, autofocus: true, autocomplete: "land_area", :class => 'form-control' %>
-          </div> 
 
-          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
-            <%= f.label :floor, :class=>'form-label' %><br />
-            <%= f.text_field :floor, autofocus: true, autocomplete: "floor", :class => 'form-control' %>
-          </div> 
+          
         </div>
         <%= f.fields_for :address do |g| %>
           <h2 class="mt-2 mb-2 text-center">Address Information</h2>

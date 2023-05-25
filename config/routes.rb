@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'project/index'
+  get 'project/show'
+  get 'project/new'
+  get 'project/create'
+  get 'project/edit'
+  get 'project/update'
+  get 'project/delete'
   get 'user/show'
   get 'user/index'
   root 'page#index'
@@ -10,13 +17,6 @@ Rails.application.routes.draw do
   put 'address' => 'user#update_address'
   delete 'address' => 'user#destroy_address'
   post 'address' => 'user#create_address'
-
-  get 'property/address/edit' => 'property#edit_address'
-  get 'property/address/create' => 'property#new_address'
-  patch 'property/address' => 'property#update_address' 
-  put 'property/address' => 'property#update_address'
-  delete 'property/address' => 'property#destroy_address'
-  post 'property/address' => 'property#create_address'
   
   devise_for :users, controllers: {
         sessions: 'devise_users/sessions',
@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   
 
   resources :property
+  resources :project
 end
