@@ -1,5 +1,10 @@
 class ProjectController < ApplicationController
   def index
+    if user_signed_in? 
+      @user = current_user
+      @property = Property.all
+      @project = Project.all
+    end 
   end
 
   def show 
@@ -12,15 +17,18 @@ class ProjectController < ApplicationController
   def new
     if user_signed_in? 
       @user = current_user
-      @project = @user.projects      
+      @project = Project.new   
       @project.build_address
+      @builder = User.all
     end
   end
 
   def create
+
     if user_signed_in?
+      debugger
       @user = current_user
-      @project = @user.projects.new( project_params )
+      @project = Project.new(project_params)
 
       respond_to do | format |
         if @project.save
@@ -38,15 +46,13 @@ class ProjectController < ApplicationController
   def edit
     if user_signed_in? 
       @user = current_user
-      @project = @user.project.find(project_param)
+      @project = Project.find(project_param)
     end
   end
 
   def update
     @user = current_user
-    @user.projects.find(project_param)
-
-
+    Project.find(project_param).update(project_params)
 
     respond_to do |format|
       format.html { redirect_to user_show_url, notice: "Project was successfully updated." }
@@ -56,7 +62,7 @@ class ProjectController < ApplicationController
 
   def destroy
     @user = current_user
-    @user.projects.find(project_param).destroy
+    Project.find(project_param).destroy
 
     respond_to do |format|
       format.html { redirect_to user_show_url, notice: "Project was successfully destroyed." }

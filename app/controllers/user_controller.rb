@@ -7,6 +7,7 @@ class UserController < ApplicationController
       @user = User.find_by(id: current_user.id)
       @address = Address.find_by(owner_id:current_user.id)
       @property = @user.properties.all
+      @project = Project.where(client_id: current_user.id)
     end
   end
 

@@ -1,0 +1,46 @@
+  <% if @property.nil? == false%>
+    <div class="row card shadow-lg">
+      <% @property.each do | property | %>
+        <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-2">
+          <div class="card-header"> Rs <%= property.price%>/-</div>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= property.address.plot_no%>, <%= property.address.locality%>, <%= property.address.city%>, [ <%= property.address.state%> ] - <%= property.address.zipcode%></strong> </h5>
+            <h6 class="card-title">
+              <strong>Land Area :</strong><%= property.land_area%> sqft<br>
+              <strong>Floors :</strong><%= property.floor%> floors
+            </h6>            
+            
+          </div>
+          <div class="card-footer row">            
+            <div class="col-lg-5 col-md-6 col-sm-6">
+              <button class="btn btn-primary ps-4 pe-4"> sell</button>
+            </div>
+          </div>
+        </div>      
+      <% end %>
+    </div>
+  <% end %>
+
+<% if @project.nil? == false%>
+    <div class="row card shadow-lg">
+      <% @project.each do | project | %>
+        <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-2">
+          <div class="card-header"><%= project.project_type %> |  Rs <%= project.budget %>/-  </div>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= project.address.plot_no %>, <%= project.address.locality %>, <%= project.address.city %>, [ <%= project.address.state %> ] - <%= project.address.zipcode %></strong> </h5>
+            <h6 class="card-title">
+              <strong>Details:</strong><%= project.details %> sqft<br>
+              <strong>Quotation :</strong><%= project.quotation_file %> floors
+            </h6>            
+           
+          </div>
+          <div class="card-footer row">
+            
+            <div class="col-lg-5 col-md-6 col-sm-6">
+              <button class="btn btn-primary ps-4 pe-4">View Info</button>
+            </div>
+          </div>
+        </div>      
+      <% end %>
+    </div>
+  <% end %>

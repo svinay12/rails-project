@@ -1,4 +1,5 @@
-<% if @project.nil? == false%>
+<div>
+  <% if @project.nil? == false%>
     <div class="row card shadow-lg">
       <% @project.each do | project | %>
         <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-2">
@@ -13,12 +14,15 @@
             <h6></h6>
           </div>
           <div class="card-footer row">
-            
             <div class="col-lg-5 col-md-6 col-sm-6">
-              <button class="btn btn-primary ps-4 pe-4">View Info</button>
+              <%= button_to 'Update', edit_project_url(project.id), method: :get, :class => ' btn btn-warning text-white '  %>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-6">
+              <%= button_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => ' btn btn-danger text-white ' %>
             </div>
           </div>
         </div>      
       <% end %>
     </div>
   <% end %>
+</div>

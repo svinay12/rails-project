@@ -1,8 +1,8 @@
 <div class="container" >
   <div class="row justify-content-center login">
     <div class="col-lg-6 col-md-10 d-flex flex-column align-items-center justify-content-center mt-2 bg-white shadow-lg" >
-      <%= form_for( @project ,url: '/property' , method: :post) do |f| %>
-        <h2 class="mt-2 mb-2 text-center">Property Information</h2>
+      <%= form_for( @project ,url: '/project' , method: :post) do |f| %>
+        <h2 class="mt-2 mb-2 text-center">Project Information</h2>
         <div class="row">
 
           <div class="field  m-4 mt-1 col-lg-5 col-md-8">
@@ -11,7 +11,7 @@
           </div>
           <div class="field  m-4 mt-1 col-lg-5 col-md-8">
             <%= f.label :time,'Expected time', :class=>'form-label' %><br />
-            <%= f.date_field :time, autofocus: true, autocomplete: "date",, :class => 'form-control' %>
+            <%= f.date_field :time, autofocus: true, autocomplete: "date", :class => 'form-control' %>
           </div>
           <div class="field  m-4 mt-1 col-lg-5 col-md-8">
             <%= f.label :project_type, :class=>'form-label' %><br />
@@ -24,10 +24,13 @@
           <div class="field  m-4 mt-1 col-lg-5 col-md-8">
             <%= f.label :details, :class=>'form-label' %><br />
             <%= f.text_field :details, autofocus: true, autocomplete: "details", :class => 'form-control' %>
-          </div>   
+          </div>
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.hidden_field :client_id, value:current_user.id %>
+            <%= f.hidden_field :builder_id, value:@builder.last.id %>
+          </div>
 
 
-          
         </div>
         <%= f.fields_for :address do |g| %>
           <h2 class="mt-2 mb-2 text-center">Address Information</h2>
