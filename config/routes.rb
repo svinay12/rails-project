@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :user, only: [:show_profile, :index, :show ]
+  get 'user/show'
+  get 'user/index'
+  # resources :user, only: [:show, :index ]
   root 'page#index'
 
   get 'address/edit' => 'user#edit_address'
