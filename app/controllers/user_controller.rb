@@ -6,12 +6,14 @@ class UserController < ApplicationController
     if user_signed_in? 
       @user = User.find_by(id: current_user.id)
       @address = Address.find_by(owner_id:current_user.id)
-      @property = @user.properties.all
-      @project = Project.where(client_id: current_user.id)
+      @property = @user.properties.all.with_attached_property_images
+      @project = Project.where(client_id: current_user.id).with_attached_project_images
     end
   end
 
   def index
+    @user = User.find_by(id: current_user.id)
+    @users = User.where(user_type:'builder').with_attached_profile_image
   end
 
   def new_address
@@ -66,7 +68,7 @@ class UserController < ApplicationController
 
   protected
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :mobile, :user_type])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :mobile, :user_type, :profile_image])
   end
 
   def address_params

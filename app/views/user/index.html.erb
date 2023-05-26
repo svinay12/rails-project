@@ -1,1 +1,18 @@
-<h1> User index</h1>
+<div class=" m-4 p-3 pe-0 ps-0">
+  <div class=" m-2 ms-0 me-0 p-3 bg-white shadow-lg row">
+    <% @users.each do | user |%>
+    <div class="card m-3 me-0 ms-0 shadow-lg col-lg-4 col-md-4 col-sm-12 " >
+      <div class="card-body row">
+        <%= image_tag user.profile_image , height: 150, width: 150, class: 'pill col-lg-6 col-md-6 col-sm-12'  %>
+        <div class="pill col-lg-6 col-md-6 col-sm-12">
+          <h5 class="card-title"><%= user.name %></h5>
+          <p class="card-text">This builder is verified by homebuilder</p>
+          <p class="card-text"><small class="text-muted">Constructtions: 30 projects</small></p>
+          <p class="card-text"><button class="btn btn-primary">view Details</button></p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+  

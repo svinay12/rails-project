@@ -2,10 +2,16 @@
   <% if @project.nil? == false%>
     <div class="row card shadow-lg">
       <% @project.each do | project | %>
-        <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-2">
-          <div class="card-header"><%= project.project_type %> |  Rs <%= project.budget %>/-  </div>
+        <div class="card col-lg-8 col-md-8 col-sm-11 shadow-lg ms-2">
           <div class="card-body">
-            <h5 class="card-title"><strong><%= project.address.plot_no %>, <%= project.address.locality %>, <%= project.address.city %>, [ <%= project.address.state %> ] - <%= project.address.zipcode %></strong> </h5>
+
+            <% if project.project_images.attached? %>
+              <% project.project_images.each do |image| %>
+                <%= image_tag url_for(image) , height: 100, width:100%>
+              <% end %>
+            <% end %>
+            <div class="text-secondary"><strong><%= project.project_type %> |  Rs <%= project.budget %>/-</strong></div>
+            <strong><%= project.address.plot_no %>, <%= project.address.locality %>, <%= project.address.city %>, [ <%= project.address.state %> ] - <%= project.address.zipcode %></strong>
             <h6 class="card-title">
               <strong>Details:</strong><%= project.details %> sqft<br>
               <strong>Quotation :</strong><%= project.quotation_file %> floors
@@ -15,10 +21,10 @@
           </div>
           <div class="card-footer row">
             <div class="col-lg-5 col-md-6 col-sm-6">
-              <%= button_to 'Update', edit_project_url(project.id), method: :get, :class => ' btn btn-warning text-white '  %>
+              <%= button_to 'Update', edit_project_url(project.id), method: :get, :class => ' btn btn-warning text-white w-100 '  %>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-6">
-              <%= button_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => ' btn btn-danger text-white ' %>
+              <%= button_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => ' btn btn-danger text-white w-100' %>
             </div>
           </div>
         </div>      

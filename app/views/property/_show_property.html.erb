@@ -2,9 +2,14 @@
   <% if @property.nil? == false%>
     <div class="row shadow-lg">
       <% @property.each do | property | %>
-        <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-2">
-          <div class="card-header"> Rs <%= property.price%>/-</div>
+        <div class="card col-lg-8 col-md-10 col-sm-11 shadow-lg ms-2">
           <div class="card-body">
+            <% if property.property_images.attached? %>
+              <% property.property_images.each do |image| %>
+                <%= image_tag url_for(image) , height: 100, width:100%>
+              <% end %>
+            <% end %><br>
+            <strong class="text-secondary"> Rs <%= property.price%>/-</strong>
             <h5 class="card-title"><strong><%= property.address.plot_no%>, <%= property.address.locality%>, <%= property.address.city%>, [ <%= property.address.state%> ] - <%= property.address.zipcode%></strong> </h5>
             <h6 class="card-title">
               <strong>Land Area :</strong><%= property.land_area%> sqft<br>
@@ -15,10 +20,10 @@
           </div>
           <div class="card-footer row">
             <div class="col-lg-5 col-md-6 col-sm-6">
-              <%= button_to 'Update', edit_property_url(property.id), method: :get, :class => ' btn btn-warning text-white '  %>
+              <%= button_to 'Update', edit_property_url(property.id), method: :get, :class => ' btn btn-warning text-white w-100'  %>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-6">
-              <%= button_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' }, :class => ' btn btn-danger text-white ' %>
+              <%= button_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' }, :class => ' btn btn-danger text-white w-100' %>
             </div>
           </div>
         </div>      

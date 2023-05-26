@@ -3,14 +3,15 @@ class ProjectController < ApplicationController
     if user_signed_in? 
       @user = current_user
       @property = Property.all
-      @project = Project.all
+      @projects = Project.all.with_attached_project_images
+      @users = User.all.with_attached_profile_image
     end 
   end
 
   def show 
     if user_signed_in? 
       @user = current_user
-      @project = @user.projects      
+      @project = Project.where(id:project_param).with_attached_project_images      
     end
   end
 
@@ -75,6 +76,6 @@ class ProjectController < ApplicationController
     params.require(:id)
   end
   def project_params
-    params.require(:project).permit(:budget, :time, :project_type, :details, :quotation_file, :client_id , :builder_id , :address_attributes => [:plot_no, :locality, :city, :state, :zipcode])
+    params.require(:project).permit(:budget, :time, :project_type, :details, :quotation_file, :client_id , :builder_id , :address_attributes => [:plot_no, :locality, :city, :state, :zipcode],project_images:[])
   end
 end

@@ -18,7 +18,13 @@
           <div class="field  m-4 mt-1 col-lg-5 col-md-8">
             <%= f.label :floor, :class=>'form-label' %><br />
             <%= f.text_field :floor, autofocus: true, autocomplete: "floor", :class => 'form-control' %>
-          </div> 
+          </div>
+
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :property_images, :class => 'form-label' %>
+            <%= f.file_field :property_images, multiple: true, :class => 'form-control'%>
+          </div>
+        
         </div>
         <%= f.fields_for :address do |g| %>
           <h2 class="mt-2 mb-2 text-center">Address Information</h2>
@@ -43,6 +49,7 @@
               <%= g.label :zipcode, :class=>'form-label' %><br />
               <%= g.text_field :zipcode, autofocus: true, autocomplete: "zipcode", :class => 'form-control' %>
             </div>
+
           </div>
         <% end %>
 

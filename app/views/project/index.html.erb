@@ -1,24 +1,34 @@
-<% if @project.nil? == false%>
-    <div class="row card shadow-lg">
-      <% @project.each do | project | %>
+<div>
+  <% if @projects.nil? == false%>
+    <div class="row shadow-lg d-flex align-item-center">
+      <% @projects.each do | project | %>
         <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-2">
-          <div class="card-header"><%= project.project_type %> |  Rs <%= project.budget %>/-  </div>
+
+          <div class="card-header"></div>
           <div class="card-body">
+
+            <% if project.project_images.attached? %>
+              <% project.project_images.each do |image| %>
+                <%= image_tag url_for(image) , height: 100, width:100%>
+              <% end %>
+            <% end %>
+            
+            <strong class="text-secondary"><%= project.project_type %> |  Rs <%= project.budget %>/-  </strong>
             <h5 class="card-title"><strong><%= project.address.plot_no %>, <%= project.address.locality %>, <%= project.address.city %>, [ <%= project.address.state %> ] - <%= project.address.zipcode %></strong> </h5>
             <h6 class="card-title">
               <strong>Details:</strong><%= project.details %> sqft<br>
               <strong>Quotation :</strong><%= project.quotation_file %> floors
             </h6>            
-            <p></p>
+            <p>Posted by: <%= @users.find(project.client_id).user_type %></p>
             <h6></h6>
           </div>
           <div class="card-footer row">
-            
             <div class="col-lg-5 col-md-6 col-sm-6">
-              <button class="btn btn-primary ps-4 pe-4">View Info</button>
+              <%= button_to 'View Details', project_url(project.id), method: :get, :class => ' btn btn-primary text-white w-100 '  %>
             </div>
           </div>
         </div>      
       <% end %>
     </div>
   <% end %>
+</div>

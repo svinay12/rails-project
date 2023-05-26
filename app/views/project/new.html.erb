@@ -30,6 +30,11 @@
             <%= f.hidden_field :builder_id, value:@builder.last.id %>
           </div>
 
+          <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+            <%= f.label :project_images %>
+            <%= f.file_field :project_images, multiple: true %>
+          </div>
+
 
         </div>
         <%= f.fields_for :address do |g| %>

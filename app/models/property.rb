@@ -1,4 +1,7 @@
 class Property < ApplicationRecord
+	
+	has_many_attached :property_images
+
 	belongs_to :user
 	has_one :address, as: :owner
 	accepts_nested_attributes_for :address, allow_destroy: true, update_only: true

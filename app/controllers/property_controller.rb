@@ -2,15 +2,15 @@ class PropertyController < ApplicationController
   def index
     if user_signed_in? 
       @user = current_user
-      @property = Property.all
-      @project = Project.all
+      @property = Property.all.with_attached_property_images
+      @project = Project.all.with_attached_project_images
     end 
   end
 
   def show
     if user_signed_in? 
       @user = current_user
-      @property = @user.properties
+      @property = @user.properties.with_attached_property_images
     end    
   end
 
@@ -25,6 +25,7 @@ class PropertyController < ApplicationController
 
   def create
     if user_signed_in?
+      debugger
       @user = current_user
       @property = @user.properties.new(property_params)
 
@@ -73,6 +74,6 @@ class PropertyController < ApplicationController
   end
  
   def property_params
-    params.require(:property).permit(:id, :price, :land_area, :property_type, :floor, :address_attributes => [:plot_no, :locality, :city, :state, :zipcode])
+    params.require(:property).permit(:id, :price, :land_area, :property_type, :floor, :address_attributes => [:plot_no, :locality, :city, :state, :zipcode],  property_images:[])
   end
 end

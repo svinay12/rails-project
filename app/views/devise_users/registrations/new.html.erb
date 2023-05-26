@@ -34,14 +34,15 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="field m-4 mt-2">
-      
-      <%= f.radio_button :user_type, 'client', :class => 'form-check-input' %> Client  
-        
-      <%= f.radio_button :user_type, 'builder', checked: true , :class => 'form-check-input' %> Builder
+    <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+      <%= f.label :profile_image %>
+      <%= f.file_field :profile_image %>
     </div>
 
-    
+    <div class="field m-4 mt-2">
+      <%= f.radio_button :user_type, 'client', :class => 'form-check-input' %> Client  
+      <%= f.radio_button :user_type, 'builder', checked: true , :class => 'form-check-input' %> Builder
+    </div>
 
     <div class="actions m-4 mt-2 mb-0">
       <%= f.submit "Sign up" %>
