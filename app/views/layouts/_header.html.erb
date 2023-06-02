@@ -25,7 +25,7 @@
           <%= link_to "Builders", user_index_url , class: 'nav-link fs-5 '%>
         </li>  
         <li class="nav-item">
-          <%= link_to "Requirement", "/customers" , class: 'nav-link fs-5 '%>
+          <%= link_to "Requirement",  project_requirement_index_url , class: 'nav-link fs-5 '%>
         </li>  
       </ul>
     </div>
@@ -38,21 +38,21 @@
         <ul class="dropdown-menu dropdown-menu-end shadow p-3 mb-5 bg-body rounded">
           
           <% if user_signed_in? %>
-            <li class="text-center">
+            <li class="text-center ">
               <%= image_tag 'default_profile.png', height: 35, width: 35, class: 'rounded-circle'  %>
-              <h5><%= @user.name %></h5>
+              <h5><%= current_user.name %></h5>
             </li>
-            <li>
-              <%= link_to "Profile", user_show_path, method: :post , class: 'nav-link fs-5 text-dark'%>
+            <li class="list-group-item-action list-group-item-primary">
+              <%= link_to "Profile", user_path(current_user.id), class: 'nav-link fs-5 text-dark'%>
             </li>
-            <li>
-              <%= button_to "Logout", destroy_user_session_path, :method => :delete, class: 'nav-link fs-5 p-0 text-dark container-fluid' %>
+            <li class="list-group-item-action list-group-item-primary">
+              <%= button_to "Logout", destroy_user_session_path, :method => :delete, class: 'nav-link fs-5 text-dark ' %>
             </li>
           <% else %>  
-            <li>
+            <li class="list-group-item-action list-group-item-primary">
               <%= link_to "Sign_up", "/users/sign_up" , class: 'nav-link fs-5 text-dark'%>
             </li>
-            <li>
+            <li class="list-group-item-action list-group-item-primary">
               <%= link_to "Login", "/users/sign_in" , class: 'nav-link fs-5 text-dark'%>
             </li>
           <% end %>

@@ -45,7 +45,10 @@
             </div>
           </div>
         <% end %>
-
+        <div class="field m-4 mt-2">
+          <%= f.radio_button :for_sale, true, :class => 'form-check-input' %> For sale  
+          <%= f.radio_button :for_sale, false, checked: true , :class => 'form-check-input' %> Not for sale
+        </div>
 
         <div class="actions m-4 mt-2 mb-3">
           <%= f.submit "Add Property" %>

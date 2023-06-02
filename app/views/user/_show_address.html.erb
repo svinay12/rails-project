@@ -1,0 +1,30 @@
+<div class=" border shadow mt-2 mb-2 p-2">
+  
+  <% if address.nil?  %>
+    <h5><strong>Address:</strong></h5>
+    <% if @user.id == current_user.id%>
+      <div class="text-end">
+        <%= link_to '<i class="fa fa-plus ps-2 pe-2"></i>'.html_safe, address_create_path,  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#new-project-modal-window', class: 'btn btn-primary btn-sm'} %>
+      </div>
+    <% end %>
+    <div class="text-center">Address not added yet</div>
+  <% else %>
+    <h5><strong>Address:</strong></h5>
+    <div class="row">
+      <div class="col-4">plot no</div>
+      <div class="col-8"><%= address.plot_no %></div>              
+    </div>
+    <div class="row">
+      <div class="col-4">Locality</div>
+      <div class="col-8"><%= address.locality %></div>              
+    </div>
+    <div class="row">
+      <div class="col-4">city</div>
+      <div class="col-8"><%= address.city %></div>              
+    </div>
+     <div class="row">
+      <div class="col-4">State</div>
+      <div class="col-8"><%= address.state %></div>              
+    </div>
+  <% end %>
+</div>

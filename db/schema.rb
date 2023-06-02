@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_24_112420) do
+ActiveRecord::Schema.define(version: 2023_06_02_095833) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -59,12 +59,12 @@ ActiveRecord::Schema.define(version: 2023_05_24_112420) do
     t.integer "budget"
     t.datetime "time"
     t.string "project_type"
-    t.string "quotation_file"
     t.text "details"
     t.bigint "client_id", null: false
     t.bigint "builder_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "generated_by"
     t.index ["builder_id"], name: "index_projects_on_builder_id"
     t.index ["client_id"], name: "index_projects_on_client_id"
   end
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2023_05_24_112420) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.boolean "for_sale"
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
 

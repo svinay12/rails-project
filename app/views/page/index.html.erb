@@ -1,21 +1,85 @@
-<div class="container-fluid row mt-3">
-  <div class="col-lg-2 col-md-1 col-sm-0" ></div>
+ 
 
-  <div class="col-lg-8 col-md-10 col-sm-12">
-    
-    <div class="wrap">
+    <div class=" container-fluid mt-4">
+    <!-- ====================================== Property ============================================ -->
+    <div class="container mt-3 mb-4 pb-5">
+   <!--  <div class="wrap">
       <div class="search">
         <input type="text" class="searchTerm" placeholder="What are you looking for?">
         <button type="submit" class="searchButton">
           <i class="fa fa-search"></i>
         </button>
       </div>
-    </div>
+    </div> -->
+      <h3 class="text-center mt-3">Top Properties</h3>
+      <% if @property.nil? == false%>
+        <div class="row shadow-lg p-3">
+          <% @property.each do | property | %>
+            <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-2">
+              <div class="card-body">
+                <% if property.property_images.attached? %>
+                  <% property.property_images.first(4).each do |image| %>
+                    <%= image_tag url_for(image) , height: 100, width:100%>
+                  <% end %>
+                <% end %><br>
 
-    <div class="bg-secondary mt-4">
+                <strong class="text-secondary"> Rs <%= property.price%>/-</strong>
+          
+                <h5 class="card-title"><strong><%= property.address.plot_no%>, <%= property.address.locality%>, <%= property.address.city%>, [ <%= property.address.state%> ] - <%= property.address.zipcode%></strong> </h5>
+                <h6 class="card-title">
+                  <strong>Land Area :</strong><%= property.land_area%> sqft<br>
+                  <strong>Floors :</strong><%= property.floor%> floors
+                </h6>            
+              </div>
+              <div class="card-footer row">
+                <div class="col-lg-5 col-md-6 col-sm-6">
+                  <%= button_to 'View Details', property_url(property.id), method: :get, :class => ' btn btn-primary text-white w-100 '  %>
+                  
+                </div>
+              </div>
+            </div>      
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    
+    <!-- ======================================= Project ============================================ -->
+    <br><br>
+    <div class="container mt-3 mb-4 pb-5">
+      <h3 class="text-center">Top Projects </h3>
+      <% if @projects.nil? == false%>
+        <div class="row shadow-lg d-flex align-item-center p-3">
+          <% @projects.each do | project | %>
+            <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-2">
+
+              <div class="card-body ">
+
+                <% if project.project_images.attached? %>
+                  <% project.project_images.first(4).each do |image| %>
+                    <%= image_tag url_for(image) , height: 100, width:100%>
+                  <% end %>
+                <% end %>
+                
+                <strong class="text-secondary"><%= project.project_type %> |  Rs <%= project.budget %>/-  </strong>
+                <h5 class="card-title"><strong><%= project.address.plot_no %>, <%= project.address.locality %>, <%= project.address.city %>, [ <%= project.address.state %> ] - <%= project.address.zipcode %></strong> </h5>
+                <h6 class="card-title">
+                  <strong>Details:</strong><%= project.details %> sqft<br>
+                  <strong>Quotation :</strong><%= project.quotation_file %> floors
+                </h6>            
+                <p>Posted by: <%= project.generated_by %></p>
+                <h6></h6>
+              </div>
+              <div class="card-footer row">
+                <div class="col-lg-5 col-md-6 col-sm-6">
+                  <%= button_to 'View Details', project_url(project.id), method: :get, :class => ' btn btn-primary text-white w-100 '  %>
+                </div>
+              </div>
+            </div>      
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <!-- ====================================== list end ============================================ -->
       
     </div>
-  </div>
-
-  <div class="col-lg-2 col-md-1 col-sm-0" ></div>
-</div>
+  

@@ -1,4 +1,4 @@
-<div class="container col-lg-4 col-md-8 col-sm-11 d-flex align-item-center shadow-lg rounded mt-5", style='background-image: linear-gradient(to right top, #f48603, #1db9ff);
+<div class="container col-lg-3 col-md-8 col-sm-11 d-flex align-item-center shadow-lg rounded mt-5", style='background-image: linear-gradient(to right top, #f48603, #1db9ff);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;'>
@@ -7,24 +7,24 @@
     <h2 class="mt-2 mb-2 text-center ">Login</h2>
 
     <div class="field m-4 mt-1">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.label :email, :class => 'form-label' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control'%>
     </div>
 
     <div class="field m-4 mt-2">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
+      <%= f.label :password , :class => 'form-label'%><br />
+      <%= f.password_field :password, autocomplete: "current-password", :class => 'form-control' %>
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="field m-4 mt-2">
+      <div class="field  m-4 mt-2">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       </div>
     <% end %>
     
     <div class="actions m-4 mt-2 mb-0">
-      <%= f.submit "Log in" %>
+      <%= f.submit "Log in" , :class => 'form-control btn btn-success'%>
     </div>
     <div class="field ms-4 mt-0">
      <p>If you don't have an account <%= render "devise/shared/links"%></p>

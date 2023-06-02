@@ -8,7 +8,8 @@
           <h5 class="card-title"><%= user.name %></h5>
           <p class="card-text">This builder is verified by homebuilder</p>
           <p class="card-text"><small class="text-muted">Constructtions: 30 projects</small></p>
-          <p class="card-text"><button class="btn btn-primary">view Details</button></p>
+          <!-- <p class="card-text"><button class="btn btn-primary">view Details</button></p> -->
+          <%= link_to 'View Details', user_path(user.id), :class => 'btn btn-primary' %>
         </div>
       </div>
     </div>

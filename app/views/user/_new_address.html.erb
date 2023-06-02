@@ -1,0 +1,100 @@
+<div class="text-end">
+  <button type="button" class="btn btn-danger me-2 mt-2" data-bs-dismiss="modal">X</button>
+</div>
+
+<% if flash.any? %>
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
+      <%= msg %>
+      <button type="button" class="close " data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+<% end %>
+
+<%= form_for( address,url: address_path, method: :post, id: 'new_address_form', remote: true) do |f| %>
+  <h2 class="mt-2 mb-2 text-center">Address Information</h2>
+  <div class="row">
+    <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+      <%= f.label :plot_no, :class=>'form-label' %><br />
+      <%= f.text_field :plot_no, autofocus: true, :class => 'form-control' , required: true%>
+    </div>
+    <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+      <%= f.label :locality, :class=>'form-label' %><br />
+      <%= f.text_field :locality, autofocus: true, :class => 'form-control', required: true %>
+    </div>
+    <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+      <%= f.label :city, :class=>'form-label' %><br />
+      <%= f.text_field :city, autofocus: true, :class => 'form-control', required: true %>
+    </div>
+    <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+      <%= f.label :state, :class=>'form-label' %><br />
+      <%= f.text_field :state, autofocus: true, :class => 'form-control', required: true %>
+    </div>  
+    <div class="field  m-4 mt-1 col-lg-5 col-md-8">
+      <%= f.label :zipcode, :class=>'form-label' %><br />
+      <%= f.text_field :zipcode, autofocus: true, :class => 'form-control', required: true %>
+    </div>
+  </div>
+
+  <div class="actions m-4 mt-2 mb-3 text-center">
+    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+    <%= f.submit "Add address" , :class => 'btn btn-success '%>
+  </div>
+<% end %> 
+
+
+
+
+<script >
+  $('#new_address').validate({
+    
+        rules: {
+          'address[zipcode]':{
+            required: true,
+            minlength: 10,
+            maxlength: 15,
+            AddressZipCodeRegex: true,
+          },
+          'address[plot_no]':{
+            required: true,
+          },
+          'address[locality]':{
+            required: true,
+          },
+          'address[city]':{
+            required: true,
+          },
+          'address[state]':{
+            required: true,
+          },
+
+        },
+        messages: {
+          'address[zipcode]':{
+            required: 'Zip code is required',
+            minlength: 'Minimum 10 character is required',
+            maxlength: 'Please enter small name',
+            AddressZipCodeRegex: 'Please enter valid name',
+          },
+          'address[plot_no]':{
+            required: 'Plot number is required',
+          },
+          'address[city]':{
+            required: 'City is required',
+          },
+          'address[state]':{
+            required: 'State is required',
+          },
+          'address[locality]':{
+            required: 'Locality is required',
+          },      
+        }
+
+        $.validator.addMethod("AddressZipCodeRegex", function (value, element) {
+        return this.optional(element) || /^[1-9]{1}[0-9]{2}\\s{0, 1}[0-9]{3}$/i.test(value)
+      },"Please Enter Valid zipcode");  
+
+      })
+</script>

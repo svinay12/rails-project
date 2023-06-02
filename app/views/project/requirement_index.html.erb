@@ -24,13 +24,13 @@
           </div>
           <div class="card-footer row">
             <div class="col-lg-5 col-md-6 col-sm-6">
-              <%= button_to 'View Details', project_url(project.id), method: :get, :class => ' btn btn-primary text-white w-100 '  %>
+              <%= button_to 'View Details',"/project/requirement_show/#{project.id}", method: :get, :class => ' btn btn-primary text-white w-100' %>
             </div>
           </div>
         </div>      
       <% end %>
     </div>
   <% else %>
-    <h4 class="text-center"> Nothing to show here </h4>  
+    <h4 class="text-center text-secondary"> Nothing to show here </h4>  
   <% end %>
 </div>

@@ -1,0 +1,20 @@
+<div class=" border shadow mt-2 mb-2 p-2">
+  <h5><strong>Personal Information:</strong></h5>
+  <% if @user.id == current_user.id%>
+    <div class="text-end ">
+      <%= link_to '<i class="fa fa-pencil ps-2 pe-2"></i>'.html_safe, edit_user_registration_path,  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#new-project-modal-window', class: 'btn btn-primary btn-sm'} %>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-4">Name</div>
+    <div class="col-8"><%= @user.name.capitalize %></div>              
+  </div>
+  <div class="row">
+    <div class="col-4">Phone</div>
+    <div class="col-8"><%= @user.mobile %></div>              
+  </div>
+  <div class="row">
+    <div class="col-4">Email</div>
+    <div class="col-8"><%= @user.email %></div>              
+  </div>
+</div>

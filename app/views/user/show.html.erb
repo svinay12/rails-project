@@ -1,144 +1,66 @@
-<section class="section profile">
-      <div class="row d-flex align-item-center">
-        <div class="col-sm-12 col-md-12 col-lg-3 ">
-          <div class="card">
-            <div class="card-body profile-card  pt-4 d-flex align-item-center text-center  row">
-
-              <div class="col-lg-12 col-md-4 col-sm-12">
-                <%= image_tag @user.profile_image , height: 70, width: 70, class: 'rounded-circle'  %>
-                <h5><%=  @user.user_type.capitalize %></h5>
-              </div>
-
-              <div class="col-lg-12 col-md-6  p-0 text-start border border-primary mt-3 shadow-lg">
-                
-
-                <div class=" m-0 p-0 ps-1">
-                  <div class="" ><strong> Personal Information </strong></div>
-                </div>
-                <div class="row m-0 p-0 ps-1">
-                  <div class="col-4" >Name</div>
-                  <div class="col-8" ><%= @user.name.capitalize %></div>
-                </div>
-
-                <div class="row m-0 p-0 ps-1">
-                  <div class="col-4">Phone</div>
-                  <div class="col-8"><%= @user.mobile %></div>
-                </div>
-
-                <div class="row m-0 p-0 ps-1">
-                  <div class="col-4" >Email</div>
-                  <div class="col-8" ><%= @user.email %></div>
-                </div>
-
-
-                <div class="text-end ">
-                  <%= link_to '<button type="button" class="btn btn-primary has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> <i class="fa fa-pencil"></i> </button>'.html_safe, edit_user_registration_path, {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
-                </div>
-                
-              </div> 
-              <% if @address.nil?%>
-                <div class="col-lg-12 col-md-6  p-0 text-start border border-warning ">
-                  
-                  <div class=" m-0 p-0 ps-1">
-                    <%= link_to '<button type="button" class="m-2 btn btn-primary has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> <i class="fa fa-plus p-1"> Add address</i> </button>'.html_safe, address_create_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
-                  </div>
-                                  
-                </div>  
-              
-
-              <% else %>
-              <div class="col-lg-12 col-md-6  p-0 text-start border border-primary shadow-lg">
-                
-                <div class=" m-0 p-0 ps-1">
-                  <div class="" ><strong> Address </strong></div>
-                </div>
-                <div class="row m-0 p-0 ps-1">
-                  <div class="col-4" >plot no</div>
-                  <div class="col-8" ><%=  @address.plot_no %></div>
-                </div>
-
-                <div class="row m-0 p-0 ps-1">
-                  <div class="col-4">Locality</div>
-                  <div class="col-8"><%=  @address.locality %></div>
-                </div>
-
-                <div class="row m-0 p-0 ps-1">
-                  <div class="col-4" >city</div>
-                  <div class="col-8" ><%=  @address.city %></div>
-                </div>
-
-                <div class="row m-0 p-0 ps-1">
-                  <div class="col-4" >State</div>
-                  <div class="col-8" ><%=  @address.state %></div>
-                </div>
-
-                <div class="text-end ">
-                  <%= link_to '<button type="button" class="btn btn-primary has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> <i class="fa fa-pencil"></i> </button>'.html_safe, address_edit_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
-                </div>
-                
-              </div>  
-              <% end %>           
-
-              <div class="social-links mt-2">
-                <a href="#" class="twitter m-3"> <i class="bi bi-twitter"> </i></a> 
-                <a href="#" class="facebook m-3"> <i class="bi bi-facebook"> </i></a>
-                <a href="#" class="instagram m-3"> <i class="bi bi-instagram"> </i></a>
-                <a href="#" class="linkedin m-3"> <i class="bi bi-linkedin"> </i></a>
-              </div>
-
-            </div>
-          </div>
+<div class="container-fluid bg-white p-3">
+  <div class="row p-2">
+    <!-- ====================  profile section  ==================== -->
+    <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="row">
+        <div class="col-lg-12 col-md-4 col-sm-12 text-center">
+          <%= image_tag @user.profile_image , height: 70, width: 70, class: 'rounded-circle shadow-lg'  %>
+          <h5><%=  @user.user_type.capitalize %></h5>
         </div>
-
-        <div class="col-sm-12 col-md-12 col-lg-9">
-
-          <div class="card">
+        <div class="col-lg-12 col-md-8 col-sm-12 card shadow-lg p-2">          
+          <%= render 'show_personal_information' %> 
+          <%= render 'show_address', address: @address %> 
+        </div>
+      </div>
+    </div>
+    <!-- =========================================================== -->
+    <div class="col-lg-8 col-md-12 col-sm-12">
+      <div class="">
+        <div class="card">
             <div class="card-body pt-3">
-              <!-- Bordered Tabs -->
+              <!-- ================== Tab section ================== -->
               <ul class="nav nav-tabs nav-tabs-bordered">
-
                 <li class="nav-item">
                   <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Projects</button>
                 </li>
-
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Properties</button>
-                </li>
-
-                 
+                </li>                 
               </ul>
-
+              <!-- ================================================= -->
               <div class="tab-content pt-2">
-
-                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                <!-- ==========================  Tab 1  ========================== -->
+                <div class="tab-pane fade show active projects" id="profile-overview">
                   <h5 class="card-title mt-3">Projects</h5>  
-                    <div class="text-end pe-3">                    
-                      <div class=" m-0 p-0 ps-1">
-                        <%= link_to '<button type="button" class="m-2 btn btn-primary  has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> + Add project</button>'.html_safe, new_project_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
-                      </div>
-                    </div>  
+                    <% if @user.id == current_user.id%>
+                      <div class="text-end p-2">
+                       <%= link_to '+ Add Project', new_project_path,  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#new-project-modal-window', class: 'btn btn-primary'} %>
+                    </div> 
+                    <% end %>
                     <%= render partial:'project/show_project' %> 
                 </div>
-
-                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-                  <div class="  ">
-                                     	
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="profile-change-password">
+                <!-- ==========================  Tab 2  ========================== -->
+                <div class="tab-pane fade properties" id="profile-change-password">
                   <h5 class="card-title mt-3">Properties </h5>
-                  <div class="text-end pe-3">
-                    <div class=" m-0 p-0 ps-1">
-                      <%= link_to '<button type="button" class="m-2 btn btn-primary  has-tooltip p-0 ps-1 m-0 pe-1" data-placement="left" title="update"> + Add property</button>'.html_safe, new_property_path,  {remote: :true, 'data-toggle': 'modal', 'data-target': '#modal-window'} %>
+                  <% if @user.id == current_user.id%>
+                    <div class="text-end p-2">
+                      <%= link_to '+ Add Property', new_property_path,  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#new-project-modal-window', class: 'btn btn-primary'} %>
                     </div>
-                  </div>  
+                  <% end %>
                   <%= render partial:'property/show_property' %>
                 </div>
-
+                <!-- ============================================================= -->
               </div>
             </div>
-          </div>
-        </div>
+          </div>        
       </div>
-    </section>  
+    </div>    
+  </div> 
+</div>
+<!-- ================================== modal body ================================== -->
+<div id="new-project-modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content text-start"></div>
+  </div>
+</div>
+<!-- ================================================================================ -->

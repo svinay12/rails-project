@@ -18,14 +18,17 @@
             <p></p>
             <h6></h6>
           </div>
-          <div class="card-footer row">
-            <div class="col-lg-5 col-md-6 col-sm-6">
-              <%= button_to 'Update', edit_property_url(property.id), method: :get, :class => ' btn btn-warning text-white w-100'  %>
+          <% if property.user_id == current_user.id %>
+            <div class="card-footer row">
+              <div class="col-lg-5 col-md-6 col-sm-6">
+                <%= button_to 'Update', edit_property_url(property.id), method: :get, :class => ' btn btn-warning text-white w-100'  %>
+              </div>
+              <div class="col-lg-5 col-md-6 col-sm-6">
+                <%= button_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' }, :class => ' btn btn-danger text-white w-100' %>
+              </div>
             </div>
-            <div class="col-lg-5 col-md-6 col-sm-6">
-              <%= button_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' }, :class => ' btn btn-danger text-white w-100' %>
-            </div>
-          </div>
+          <% end %>
+
         </div>      
       <% end %>
     </div>

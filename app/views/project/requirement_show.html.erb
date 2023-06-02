@@ -1,0 +1,24 @@
+<div class="container-fluid p-3">
+	<div class="bg-white shadow-lg p-3">
+		<% if @project.nil? %>
+			<h6 class="text-center text-secondary pt-5"> Nothing to show here </h6>
+		<%else%>	
+			<div class=" card shadow-lg p-4">
+				<h4>A <%= @project.project_type %> project near <%= @project.address.locality %></h4>
+				<p class="fs-6 text-secondary "><strong>Posted by: </strong> <%= @client.name.capitalize %> </p>
+				<h6>
+				<div class="row border border-rounded border-primary p-4">
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<p class="pt-2"><strong>Budget: </strong> <%= @project.budget %></p>
+						<p class="pt-2"><strong>Details: </strong> <%= @project.details %></p>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-12">
+						<p class="pt-2"><strong>Posted on: </strong> <%= @project.created_at.strftime(" %d/%m/%Y") %></p>
+						<p class="pt-2"><strong>Expected: </strong> <%= @project.time %></p>
+					</div>
+				</div>
+				</h6>
+			</div>
+		<%end%>		
+	</div>
+</div>

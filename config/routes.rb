@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  
-  get 'user/show'
-  get 'user/index'
-  # resources :user, only: [:show, :index ]
+  get 'home/index'
+  get 'home/new'
   root 'page#index'
+
+  get 'project/requirement_index' => 'project#requirement_index'
+  get 'project/requirement_show/:id' => 'project#requirement_show'
+  
+  resources :user, only: [:show, :index ]
 
   get 'address/edit' => 'user#edit_address'
   get 'address/create' => 'user#new_address'
@@ -19,9 +22,8 @@ Rails.application.routes.draw do
         registrations: 'devise_users/registrations',
         unlocks: 'devise_users/unlocks'
       }
-  
-  
-
+      
   resources :property
   resources :project
+
 end
