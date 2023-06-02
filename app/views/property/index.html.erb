@@ -1,11 +1,11 @@
 <div class="">
   <% if @property.nil? == false%>
-    <div class="row bg-white shadow-lg">
+    <div class="row bg-white shadow-lg text-center">
       <% @property.each do | property | %>
-        <div class="card col-lg-6 col-md-6 col-sm-11 shadow-lg ms-2">
+        <div class="card col-lg-5 col-md-6 col-sm-11 shadow-lg ms-5 text-start">
           <div class="card-body">
             <% if property.property_images.attached? %>
-              <% property.property_images.each do |image| %>
+              <% property.property_images.first(3).each do |image| %>
                 <%= image_tag url_for(image) , height: 100, width:100%>
               <% end %>
             <% end %><br>
@@ -20,7 +20,7 @@
           </div>
           <div class="card-footer row">
             <div class="col-lg-5 col-md-6 col-sm-6">
-              <%= button_to 'Contact Owner', property_url(property.id), method: :get, :class => ' btn btn-primary text-white w-100 '  %>
+              <%= button_to 'Contact Owner', property_url(property.id), method: :get, remote: true , :class => ' btn btn-primary text-white w-100 '  %>
               
             </div>
           </div>

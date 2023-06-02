@@ -62,7 +62,7 @@ class UserController < ApplicationController
       
       respond_to do | format|
         if ( @address.save )
-          format.html { redirect_to user_url(@address), notice: "address successfully created." }
+          format.html { redirect_to user_url(@user), notice: "address successfully created." }
           format.json { render :show, status: :created, location: @address }
         else
           flash[:success] = "#{@address.errors.full_messages[0]}"

@@ -15,9 +15,11 @@ class PropertyController < ApplicationController
       @property = Property.find(property_param)
       @reciever = @property.user
     end
-    ResponseMailer.with(user: @reciever).connect_request_mail.deliver_later
+    
     respond_to do | format|
       Rails.logger.info 'saved'
+      ResponseMailer.with(user: @reciever).connect_request_mail.deliver_later
+      flash[:success] = "Your request is sent, wait for the response from owner"
       format.html { redirect_to property_index_url, notice: "property successfully created." }
       format.json { render :index, status: :created, location: @property }
     end

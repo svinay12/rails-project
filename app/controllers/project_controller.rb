@@ -53,7 +53,7 @@ class ProjectController < ApplicationController
       respond_to do | format |
         if @project.save
           Rails.logger.info 'saved'
-          format.html { redirect_to user_url(@project), notice: "Project successfully created." }
+          format.html { redirect_to user_url(@user), notice: "Project successfully created." }
           format.json { render :show, status: :created, location: @project }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -75,7 +75,7 @@ class ProjectController < ApplicationController
     Project.find(project_param).update(project_params)
 
     respond_to do |format|
-      format.html { redirect_to user_url, notice: "Project was successfully updated." }
+      format.html { redirect_to user_url(project_param), notice: "Project was successfully updated." }
       format.json { head :no_content }
     end
   end
@@ -85,7 +85,7 @@ class ProjectController < ApplicationController
     Project.find(project_param).destroy
 
     respond_to do |format|
-      format.html { redirect_to user_url, notice: "Project was successfully destroyed." }
+      format.html { redirect_to user_url(project_param), notice: "Project was successfully destroyed." }
       format.json { head :no_content }
     end
   end
